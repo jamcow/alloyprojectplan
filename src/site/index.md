@@ -1,90 +1,60 @@
 ---
-title: EleventyOne
-subtitle: A project scaffold for getting building with Eleventy quickly.<br /> Made by <a href="https://twitter.com/philhawksworth">Phil</a> for <a href="https://twitter.com/philhawksworth">Phil</a>, but perhaps you might also find it useful.
+title: Alloy Project Plan
+subtitle: 
 layout: layouts/base.njk
 ---
 
+## Project Setup
 
-## This site is a starting point
+### Environment Setup
 
-From this point we should already have:
+- Update FE development process to use Webpack, Babel and Polyfills (ECMAScript6/AngularJS/Angular/Vue).
+- For now - single CSS bundle and single JS bundle. In grand scheme of things, we produce fairly small bundles on average:
 
-- [Eleventy](https://11ty.io) with a skeleton site
-- A date format filter for Nunjucks based on [Luxon](https://moment.github.io/luxon)
-- A tiny CSS pipeline with PostCSS
-- A tiny inline JS pipeline. (<a href="#" class="btn-log">Test a console.log message</a>)
-- JS [search index](/search.json) generator
-- [Netlify Dev](https://www.netlify.com/products/dev) for testing [Netlify redirects](https://netlify.com/docs/redirects/)
-- Serverless (FaaS) development pipeline with [Netlify Dev](https://www.netlify.com/products/dev) and [Netlify Functions](https://www.netlify.com/products/functions)
+|Project  |CSS  |CSS (gzip)  |JS  |JS (gzip)  |
+|---------|---------|---------|---------|---------|
+|ncc      | 136     | 28      | 240     | 106     |
+|xcd      | 98      | 18      | 272     | 118     |
+|gg       | 165     | 25      | 2100    | 379     |
 
+- FE to discuss/extend/give BE a functional spec for a module. Help prevent missing features that are difficult to get into a module after the fact. eg, title attribute on an iframe (needs to be in Umbraco with explainer text, not constructed from a module name)
 
+## Work to be Sprinted
 
-## Post pages
+- Article listing
+  - default (news) card
+  - featured (news) card
+- Article (news) page
+- Modules Layout List
+  - layout for page modules (outer 'stripes')
+  - layout for inner page modules
+- Banners
+- Navigation elements
+  - sub items, expansion and animation
+  - mobile shrunken state and animation
+- Navigation layout
+  - logo, nav, search
+- Form elements (using Editor Templates)
+  - checkbox
+  - radio
+  - input
+  - select
+- Form layout
+  - inline
+  - rows
+- Search results
+- Pagination
+- Sitemap
+- Breadcrumbs
+- Cookie preferences
+- Newsletter Signup
+- Enquiry Form
+- Social sharing widget
 
-The pages found in in the posts
+### Future Environment Setup
 
-<ul class="listing">
-{%- for page in collections.post -%}
-  <li>
-    <a href="{{ page.url }}">{{ page.data.title }}</a> -
-    <time datetime="{{ page.date }}">{{ page.date | dateDisplay("LLLL d, y") }}</time>
-  </li>
-{%- endfor -%}
-</ul>
-
-## Links from an external data source
-
-These links were sourced from [hawksworx.com](https://www.hawksworx.com/feed.json) at build time.
-
-<ul class="listing">
-{%- for item in hawksworx.entries.slice(0,5) -%}
-  <li>
-    <a href="{{ item.link }}">{{ item.title }}</a>
-  </li>
-{%- endfor -%}
-</ul>
-
-
-## Prerequisite
-
-- [Node and NPM](https://nodejs.org/)
-
-## Running locally
-
-```bash
-# install the dependencies
-npm install
-
-# External data sources can be stashed locally
-npm run seed
-
-# It will then be available locally for building with
-npm run start
-```
-
-## Add some Netlify helpers
-Netlify Dev adds the ability to use Netlify redirects, proxies, and serverless functions.
-
-```bash
-# install the Netlify CLI in order to get Netlify Dev
-npm install -g netlify-cli
-
-# run a local server with some added Netlify sugar in front of Eleventy
-netlify dev
-```
-
-A serverless functions pipeline is included via Netlify Dev. By running `netlify dev` you'll be able to execute any of your serverless functions directly like this:
-
-- [/.netlify/functions/hello](/.netlify/functions/hello)
-- [/.netlify/functions/fetch-joke](/.netlify/functions/fetch-joke)
-
-### Redirects and proxies
-
-Netlify's Redirects API can provide friendlier URLs as proxies to these URLs.
-
-- [/api/hello](/api/hello)
-- [/api/fetch-joke](/api/fetch-joke)
-
-
-
-
+Have CSS and JS modules linked to pages/views (maybe RequireJS, or combo with Webpack chunks?)
+Using Babel and Polyfills - deliver 'optimised' JS and polyfilled/old JS to 'supported' browsers, no-js to rest.
+Agnostic JS dev - Vanilla/ECMAscript 6, AngularJS, Angular, Vue
+Modular approach (Would be nice to get basic Alloy modules linked to their JS modules that make them function). Not always worked in the past, as design called for too different functionality/design, or module didn't have that spec, difficult to put those changes back into Alloy.
+Additional custom/bespoke JS and modules - led by Design/UX/budget
