@@ -222,3 +222,8 @@ table td, table th {
 table tr {
   border-top: 1px solid #c6cbd1;
 }
+
+img {
+  max-width: 100%;
+  display: block;
+}
