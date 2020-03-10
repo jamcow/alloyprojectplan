@@ -34,6 +34,8 @@ body {
   @media (min-width: $narrow) {
     font-size: 18px;
   };
+
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 .container {

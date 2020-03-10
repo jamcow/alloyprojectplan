@@ -6,6 +6,14 @@ layout: layouts/base.njk
 
 ## Work to be Sprinted
 
+### Environment Setup
+
+- Significant environment setup changes (Webpack)
+- Pared-down Sass setup (normalize, mixins, variables, default styles)
+- Documentation within Sass modules
+
+### Modules
+
 - Article listing
   - default (news) card
   - featured (news) card
