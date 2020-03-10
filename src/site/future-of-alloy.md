@@ -1,5 +1,5 @@
 ---
-title: Future of Alloy
+title: . . . 
 subtitle: 
 layout: layouts/base.njk
 ---
